@@ -1,0 +1,18 @@
+syntax="proto3";
+package sensorpb;
+
+option go_package="./sensorpb";
+
+
+message SensorReq {
+    int32 Id = 1;
+    float Reading = 2;
+}
+
+message SensorResp {
+    int32 Id = 1;
+}
+
+service SensorService {
+    rpc SendData (stream SensorReq) returns (SensorResp);
+}
